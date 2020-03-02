@@ -104,3 +104,12 @@ If you attempt to use Spago commands to install or build in your project, you'll
 ```
 spago: security: createProcess: runInteractiveProcess: exec: does not exist (No such file or directory)
 ```
+
+## Hacking
+
+I've found that simplest way to hack on this project is to use dedicated `shell.nix` and use standard spago flow:
+
+```bash
+$ spago build
+$ spago bundle-app --main Main --no-install --to bin/output.js
+```
