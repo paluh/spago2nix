@@ -21,8 +21,8 @@ in
       pkgs.fetchFromGitHub {
         owner = "justinwoo";
         repo = "easy-purescript-nix";
-        rev = "cc7196bff3fdb5957aabfe22c3fa88267047fe88";
-        sha256 = "1xfl7rnmmcm8qdlsfn3xjv91my6lirs5ysy01bmyblsl10y2z9iw";
+        rev = "340e82b6ecaccc4059740e69f8ec18546b527481";
+        sha256 = "1q2ciwd3193kig1paidzrgxl60y4rb39bsi97lk7m6ff8mis6z6i";
       }
     ) {
       inherit pkgs;
@@ -35,6 +35,7 @@ in
       src = pkgs.nix-gitignore.gitignoreSource [ ".git" ] ./.;
 
       buildInputs = [ pkgs.makeWrapper ];
+      propagatedBuildInputs = [ easy-purescript-nix.purs easy-purescript-nix.spago ];
 
       installPhase = ''
         mkdir -p $out/bin
@@ -50,6 +51,7 @@ in
         pkgs.coreutils
         pkgs.nix-prefetch-git
         easy-purescript-nix.spago
+        easy-purescript-nix.purs
         dhall-json
       ]}
       '';
